@@ -1,21 +1,50 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import api from './common/api-service';
+import Header from './components/Header';
+import SearchBar from './components/SearchBar';
+import GiphyList from './components/GiphyList';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
-    );
-  }
+	constructor() {
+		super();
+		this.state = {
+			giphyList: []
+		};
+	}
+
+	componentDidMount() {
+		api.fetchTrending()
+			.then((response)=> {
+				this.setState({
+					giphyList: response
+				});
+			});
+	}
+
+	_handleUserSearch() {
+
+	}
+
+	_fetchTrending() {
+		api.fetchTrending()
+			.then((response)=> {
+				this.setState({
+					giphyList: response
+				});
+			});
+	}
+
+	render() {
+		const {giphyList} = this.state;
+		return (
+			<div className="App">
+				<Header title="Eaze" />
+				<SearchBar />
+				<GiphyList giphyList={giphyList} />
+			</div>
+		);
+	}
 }
 
 export default App;
