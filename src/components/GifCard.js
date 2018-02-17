@@ -1,17 +1,15 @@
 import React from 'react';
 
 const GifCard = ({
-	link,
 	previewUrl,
 	width,
 	height
 }) => {
 	return (
-		<div>
-			<div>{link}</div>
-			<div>{previewUrl}</div>
-			<div>{width}</div>
-			<div>{height}</div>
+		<div className="giphy-card">
+			<video autoPlay loop style={{height: height, width: width}}>
+				<source type="video/mp4" src={previewUrl} />
+			</video>
 		</div>
 	)
 };

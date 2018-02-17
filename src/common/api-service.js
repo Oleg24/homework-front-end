@@ -6,8 +6,8 @@ const host = "http://api.giphy.com";
 
 const api = {
 	fetchTrending: ()=> {
-		const trendingUrl = "/v1/gifs/trending";
-		return axios.get(host + trendingUrl, {
+		const trendingAPI = "/v1/gifs/trending";
+		return axios.get(host + trendingAPI, {
 				params: {
 					api_key: api_key
 				}
@@ -18,6 +18,23 @@ const api = {
 			.catch((error)=> {
 				console.log('error', error);
 				throw error;
+			});
+	},
+	searchGiphy: (searchValue)=> {
+		const builtSearchValue = apiVO.buildSearchValue(searchValue);
+		const searchAPI = "/v1/gifs/search";
+		return axios.get(host+ searchAPI, {
+			params: {
+				api_key: api_key,
+				q: builtSearchValue
+			}
+		})
+			.then((response)=>{
+				return apiVO.mapGiphyResponse(response.data);
+			})
+			.catch((error)=>{
+				console.log('search error', error);
+				throw erorr;
 			});
 	}
 };

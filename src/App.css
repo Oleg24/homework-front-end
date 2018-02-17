@@ -10,3 +10,13 @@
 	font-size: 30px;
 }
 
+.giphy-list {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.giphy-card {
+	display: flex;
+	align-items: center;
+}

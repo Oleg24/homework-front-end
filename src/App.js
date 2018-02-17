@@ -6,33 +6,47 @@ import SearchBar from './components/SearchBar';
 import GiphyList from './components/GiphyList';
 
 class App extends Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
 			giphyList: []
 		};
+		this.handleUserSearch = this._handleUserSearch.bind(this);
+		this.fetchTrending = this._fetchTrending.bind(this);
+		this.fetchSearch = this._fetchSearch.bind(this);
+		this.setGiphyList = this._setGiphyList.bind(this);
 	}
 
 	componentDidMount() {
-		api.fetchTrending()
-			.then((response)=> {
-				this.setState({
-					giphyList: response
-				});
-			});
+		this.fetchTrending();
 	}
 
-	_handleUserSearch() {
-
+	_handleUserSearch(value) {
+		if (value === "") {
+			this.fetchTrending();
+		} else {
+			this.fetchSearch(value);
+		}
 	}
 
 	_fetchTrending() {
 		api.fetchTrending()
 			.then((response)=> {
-				this.setState({
-					giphyList: response
-				});
+				this.setGiphyList(response);
 			});
+	}
+
+	_fetchSearch(searchInput) {
+		api.searchGiphy(searchInput)
+			.then((response)=> {
+				this.setGiphyList(response);
+			});
+	}
+
+	_setGiphyList(list) {
+		this.setState({
+			giphyList: list
+		});
 	}
 
 	render() {
@@ -40,7 +54,7 @@ class App extends Component {
 		return (
 			<div className="App">
 				<Header title="Eaze" />
-				<SearchBar />
+				<SearchBar handleSearch={this.handleUserSearch} />
 				<GiphyList giphyList={giphyList} />
 			</div>
 		);

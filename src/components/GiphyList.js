@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import GifCard from './GifCard';
 
-class GiffyList extends Component {
+class GiphyList extends Component {
 	constructor(props) {
 		super(props);
 	}
@@ -9,9 +9,9 @@ class GiffyList extends Component {
 	render() {
 		const {giphyList} = this.props;
 		return (
-			<div>
+			<div className="giphy-list">
 				{giphyList.map((gif)=> {
-					return <GifCard {...gif} />
+					return <GifCard key={gif.id} {...gif} />
 				})
 				}
 			</div>
@@ -19,4 +19,4 @@ class GiffyList extends Component {
 	}
 }
 
-export default GiffyList;
+export default GiphyList;
