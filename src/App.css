@@ -101,7 +101,7 @@
 }
 
 .gif-card__user-twitter {
-	color: dodgerblue;
+	color: #00c5ff;
 }
 
 .gif-card__user-avatar {
@@ -113,9 +113,20 @@
 	text-transform: uppercase;
 }
 
+.gif-card__embed-code {
+	width: 100%;
+}
+
+.embed-container {
+	display: flex;
+	flex-direction: column;
+}
+
 .embed-code {
 	background-color: white;
 	color: black;
+	overflow-x: scroll;
+	height: 35px;
 }
 
 .ReactModal__Body--open {

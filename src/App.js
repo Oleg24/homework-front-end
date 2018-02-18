@@ -90,6 +90,7 @@ class App extends Component {
 			<div className="App">
 				<Header title="Eaze" />
 				<SearchBar handleSearch={this.handleUserSearch} />
+				<p><a href='https://giphy.com/gifs/basketball-sport-xThtav6PFLh0M8VOBa'>via GIPHY</a></p>
 				<Loader loading={loading} />
 				<GifModal open={openGifModal} gif={gifInFocus} toggleModal={this.toggleModal} />
 				<GiphyList giphyList={giphyList} selectGiphy={this.selectGif} />

@@ -44,7 +44,7 @@ class GifFullCard extends Component {
 							<div className="gif-card__user-name">{gif.userName}</div>
 							{gif.twitter ?
 								<a className="gif-card__user-twitter" href={TWITTER_URL + gif.twitter} target="_black">
-									@{gif.twitter}
+									{gif.twitter}
 								</a> : ""
 							}
 							<img className="gif-card__user-avatar" src={gif.avatar} />
@@ -56,12 +56,13 @@ class GifFullCard extends Component {
 					</div>
 				</div>
 				{openEmbedLink ?
-					<EmbedView
-						embedLink={gif.embedLink}
-						height={gif.height}
-						width={gif.width}
-						url={gif.url}
-					/> : ""
+					<div className="gif-card__embed-code">
+						<EmbedView
+							embedUrl={gif.embedUrl}
+							height={gif.height}
+							width={gif.width}
+							url={gif.url}
+						/></div> : ""
 				}
 			</div>
 		)
