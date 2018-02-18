@@ -1,5 +1,8 @@
 .App {
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
 }
 
 .App-header {
@@ -10,13 +13,113 @@
 	font-size: 30px;
 }
 
+.search-bar {
+	padding: 10px;
+	width: 50%;
+	align-self: center;
+}
+
 .giphy-list {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	background-color: #131313;
+	padding: 5px;
 }
 
-.giphy-card {
+.gif-modal {
+	background-color: #484848;
+	color: whitesmoke;
+	border-radius: 5px;
+	padding: 10px;
+	position: fixed;
+	top: 50%;
+	right: auto;
+	bottom: auto;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.gif-card-mini {
 	display: flex;
 	align-items: center;
+	margin: 0 5px 5px 0;
 }
+
+.gif-card-mini:hover {
+	cursor: pointer;
+}
+
+.gif-card-full {
+	display: flex;
+	align-items: stretch;
+	flex-direction: column;
+}
+
+.gif-card__header {
+	height: 30px;
+	display: flex;
+	flex: 1;
+	justify-content: flex-end;
+	border-bottom: 2px solid black;
+	margin-bottom: 5px;
+}
+
+.gif-card__title {
+	font-size: 18px;
+	text-transform: capitalize;
+	text-align: center;
+	margin-bottom: 10px;
+}
+
+.gif-card__video {
+	align-self: center;
+	margin-bottom: 10px;
+}
+
+.gif-card__meta {
+	display: flex;
+	flex: 1;
+	align-items: center;
+	justify-content: space-around;
+	margin-bottom: 10px;
+}
+
+.gif-card__user {
+	font-size: 18px;
+	padding: 5px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.gif-card__user-name {
+	text-transform: uppercase;
+	text-align: center;
+}
+
+.gif-card__user-twitter {
+	color: dodgerblue;
+}
+
+.gif-card__user-avatar {
+	height: 75px;
+	width: 75px;
+}
+
+.gif-card__rating {
+	text-transform: uppercase;
+}
+
+.embed-code {
+	background-color: white;
+	color: black;
+}
+
+.ReactModal__Body--open {
+	overflow-y: hidden;
+}
+
+

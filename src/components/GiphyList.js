@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import GifCard from './GifCard';
+import GifMinCard from './GifMinCard';
 
 class GiphyList extends Component {
 	constructor(props) {
@@ -7,11 +7,14 @@ class GiphyList extends Component {
 	}
 
 	render() {
-		const {giphyList} = this.props;
+		const {giphyList, selectGiphy} = this.props;
 		return (
 			<div className="giphy-list">
 				{giphyList.map((gif)=> {
-					return <GifCard key={gif.id} {...gif} />
+					return <GifMinCard
+						{...gif}
+						key={gif.id}
+						selectGiphy={()=> selectGiphy(gif)} />
 				})
 				}
 			</div>

@@ -5,19 +5,24 @@ import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import GiphyList from './components/GiphyList';
 import Loader from './components/Loader';
+import GifModal from './components/GifModal';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
 			giphyList: [],
-			loading: false
+			loading: false,
+			openGifModal: false,
+			gifInFocus: {}
 		};
 		this.handleUserSearch = this._handleUserSearch.bind(this);
 		this.fetchTrending = this._fetchTrending.bind(this);
 		this.fetchSearch = this._fetchSearch.bind(this);
+		this.selectGif = this._selectGif.bind(this);
 		this.setGiphyList = this._setGiphyList.bind(this);
 		this.setLoadingState = this._setLoadingState.bind(this);
+		this.toggleModal = this._toggleModal.bind(this);
 	}
 
 	componentDidMount() {
@@ -61,15 +66,33 @@ class App extends Component {
 		});
 	}
 
+	_selectGif(gif) {
+		this.setState({
+			openGifModal: true,
+			gifInFocus: gif
+		});
+	}
+
+	_toggleModal() {
+		this.setState({
+			openGifModal: !this.state.openGifModal
+		});
+	}
+
 	render() {
-		const {giphyList, loading} = this.state;
-		console.log(loading);
+		const {
+			giphyList,
+			loading,
+			openGifModal,
+			gifInFocus
+		} = this.state;
 		return (
 			<div className="App">
 				<Header title="Eaze" />
 				<SearchBar handleSearch={this.handleUserSearch} />
 				<Loader loading={loading} />
-				<GiphyList giphyList={giphyList} />
+				<GifModal open={openGifModal} gif={gifInFocus} toggleModal={this.toggleModal} />
+				<GiphyList giphyList={giphyList} selectGiphy={this.selectGif} />
 			</div>
 		);
 	}

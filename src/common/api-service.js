@@ -13,6 +13,7 @@ const api = {
 				}
 			})
 			.then((response)=> {
+				console.log(response);
 				return apiVO.mapGiphyResponse(response.data);
 			})
 			.catch((error)=> {
@@ -23,18 +24,19 @@ const api = {
 	searchGiphy: (searchValue)=> {
 		const builtSearchValue = apiVO.buildSearchValue(searchValue);
 		const searchAPI = "/v1/gifs/search";
-		return axios.get(host+ searchAPI, {
-			params: {
-				api_key: api_key,
-				q: builtSearchValue
-			}
-		})
-			.then((response)=>{
+		return axios.get(host + searchAPI, {
+				params: {
+					api_key: api_key,
+					q: builtSearchValue
+				}
+			})
+			.then((response)=> {
+				console.log(response);
 				return apiVO.mapGiphyResponse(response.data);
 			})
-			.catch((error)=>{
+			.catch((error)=> {
 				console.log('search error', error);
-				throw erorr;
+				throw error;
 			});
 	}
 };

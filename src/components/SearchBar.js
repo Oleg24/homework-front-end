@@ -30,12 +30,15 @@ class SearchBar extends Component {
 	render() {
 		const {searchValue} = this.state;
 		return (
-			<Input
-				icon='search'
-				placeholder='Search for gifs...'
-				value={searchValue}
-				onChange={this.handleChange}
-			/>
+			<div className="search-bar">
+				<Input
+					icon='search'
+					placeholder='Search for all GIFs'
+					fluid
+					value={searchValue}
+					onChange={this.handleChange}
+				/>
+			</div>
 		)
 	}
 
