@@ -60,8 +60,6 @@ class GiphyListContainer extends Component {
 			loading: false,
 			giphyList: this.state.giphyList.concat(list),
 			[key]: pagination
-		}, ()=> {
-			console.log('state', this.state);
 		});
 	}
 
@@ -76,13 +74,14 @@ class GiphyListContainer extends Component {
 			loading,
 			giphyList
 		} = this.state;
-		const {selectGif} = this.props;
+		const {selectGif, isAutoPlayActive} = this.props;
 		return (
 			<div>
 				<GiphyList
 					giphyList={giphyList}
 					loading={loading}
 					selectGif={selectGif}
+					isAutoPlayActive={isAutoPlayActive}
 					loadMore={this.fetchGifs} />
 			</div>
 		)

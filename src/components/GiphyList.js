@@ -9,7 +9,7 @@ class GiphyList extends Component {
 	}
 
 	render() {
-		const {giphyList, loadMore, loading, selectGif} = this.props;
+		const {giphyList, loadMore, loading, isAutoPlayActive, selectGif} = this.props;
 		let rows = [];
 		let tr = [];
 
@@ -18,7 +18,9 @@ class GiphyList extends Component {
 				<GifMinCard
 					{...gif}
 					key={gif.id}
-					selectGiphy={()=> selectGif(gif)} />
+					isAutoPlayActive={isAutoPlayActive}
+					selectGiphy={()=> selectGif(gif)}
+				/>
 			);
 			if (idx !== 0 && idx % 4 === 0) {
 				rows.push(<div className="gif-list__row" key={idx}>{tr}</div>);

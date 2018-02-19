@@ -1,13 +1,11 @@
 const apiViewObject = {
-	buildRequestObject: (options)=> {
-
-	},
 	mapGiphyResponse: (apiResponse)=> {
 		console.log('api response', apiResponse)
 		return {
 			gifListData: apiResponse.data.map((gif)=> {
 				return {
 					previewUrl: gif.images.looping.mp4,
+					previewImage: gif.images.original_still.url,
 					width: gif.images.preview.width,
 					height: gif.images.preview.height,
 					userName: (gif.user && gif.user.username) ? gif.user.username : null,

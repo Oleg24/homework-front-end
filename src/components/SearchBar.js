@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Input} from 'semantic-ui-react';
+import AutoPlay from './AutoPlay';
 
 const WAIT_INTERVAL = 800;
 
@@ -29,14 +30,20 @@ class SearchBar extends Component {
 
 	render() {
 		const {searchValue} = this.state;
+		const {toggleAutoPlay, isAutoPlayActive } = this.props;
 		return (
 			<div className="search-bar">
 				<Input
 					icon='search'
+					className="search-bar__input"
 					placeholder='Search for all GIFs'
 					fluid
 					value={searchValue}
 					onChange={this.handleChange}
+				/>
+				<AutoPlay
+					isAutoPlayActive={isAutoPlayActive}
+					toggleAutoPlay={toggleAutoPlay} 
 				/>
 			</div>
 		)

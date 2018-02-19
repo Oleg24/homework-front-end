@@ -11,11 +11,13 @@ class App extends Component {
 		this.state = {
 			openGifModal: false,
 			gifInFocus: {},
+			isAutoPlayActive: true,
 			searchValue: ""
 		};
 		this.handleUserSearch = this._handleUserSearch.bind(this);
 		this.selectGif = this._selectGif.bind(this);
 		this.toggleModal = this._toggleModal.bind(this);
+		this.toggleAutoPlay = this._toggleAutoPlay.bind(this);
 	}
 
 	_handleUserSearch(value) {
@@ -37,18 +39,33 @@ class App extends Component {
 		});
 	}
 
+	_toggleAutoPlay() {
+		this.setState({
+			isAutoPlayActive: !this.state.isAutoPlayActive
+		});
+	}
+
 	render() {
 		const {
 			openGifModal,
 			gifInFocus,
 			searchValue,
+			isAutoPlayActive
 		} = this.state;
 		return (
 			<div className="App">
 				<Header title="Eaze" />
-				<SearchBar handleSearch={this.handleUserSearch} />
+				<SearchBar
+					handleSearch={this.handleUserSearch}
+					isAutoPlayActive={isAutoPlayActive}
+					toggleAutoPlay={this.toggleAutoPlay}
+				/>
 				<GifModal open={openGifModal} gif={gifInFocus} toggleModal={this.toggleModal} />
-				<GiphyListContainer selectGif={this.selectGif} searchValue={searchValue} />
+				<GiphyListContainer
+					selectGif={this.selectGif}
+					searchValue={searchValue}
+					isAutoPlayActive={isAutoPlayActive}
+				/>
 			</div>
 		);
 	}

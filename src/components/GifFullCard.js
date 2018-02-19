@@ -36,6 +36,7 @@ class GifFullCard extends Component {
 						previewUrl={gif.previewUrl}
 						width={gif.width}
 						height={gif.height}
+						isAutoPlayActive={true}
 					/>
 				</div>
 				<div className="gif-card__meta">

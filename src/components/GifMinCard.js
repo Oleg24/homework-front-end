@@ -5,8 +5,8 @@ import Loader from './Loader';
 
 const GifMinCard = ({
 	previewUrl,
-	width,
-	height,
+	previewImage,
+	isAutoPlayActive,
 	selectGiphy
 }) => {
 	return (
@@ -14,9 +14,11 @@ const GifMinCard = ({
 			<VisibilitySensor partialVisibility>
 				{({isVisible}) =>
 					isVisible ? <GifVideo
+						isAutoPlayActive={isAutoPlayActive}
 						previewUrl={previewUrl}
+						previewImage={previewImage}
 						width={200}
-						height={150}
+						height={100}
 					/> : <div className="gif-card-mini__loading"><Loader /></div>
 				}
 			</VisibilitySensor>
