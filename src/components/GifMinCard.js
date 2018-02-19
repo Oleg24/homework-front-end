@@ -15,8 +15,8 @@ const GifMinCard = ({
 				{({isVisible}) =>
 					isVisible ? <GifVideo
 						previewUrl={previewUrl}
-						width={width}
-						height={height}
+						width={200}
+						height={150}
 					/> : <div className="gif-card-mini__loading"><Loader /></div>
 				}
 			</VisibilitySensor>

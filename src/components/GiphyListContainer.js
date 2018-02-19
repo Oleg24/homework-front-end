@@ -9,40 +9,59 @@ class GiphyListContainer extends Component {
 		this.state = {
 			giphyList: [],
 			loading: false,
-			fetchTrending: true,
-			pagination: {}
+			searchValue: '',
+			fetchSearch: false,
+			trendingPagination: {},
+			searchPagination: {}
 		};
-		this.fetchTrending = this._fetchTrending.bind(this);
-		this.fetchSearch = this._fetchSearch.bind(this);
 		this.setGiphyList = this._setGiphyList.bind(this);
-		this.setLoadingState = this._setLoadingState.bind(this);
+		this.fetchGifs = this._fetchGifs.bind(this);
 	}
 
-	componentDidUpdate(p) {
-		// console.log('props', p);
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.searchValue !== this.state.searchValue) {
+			this.setState({
+				searchValue: nextProps.searchValue,
+				searchPagination: {},
+				giphyList: []
+			}, ()=> {
+				this._fetchGifs();
+			});
+		}
+	}
+
+	_fetchGifs() {
+		let searchValue = this.state.searchValue;
+		this._setLoadingState();
+		if (searchValue) {
+			this._fetchSearch(searchValue);
+		} else {
+			this._fetchTrending();
+		}
 	}
 
 	_fetchTrending() {
-		this.setLoadingState();
-		api.fetchTrending(this.state.pagination)
+		api.fetchTrending(this.state.trendingPagination)
 			.then((response)=> {
-				this.setGiphyList(response.gifListData, response.paginationData);
+				this.setGiphyList(response.gifListData, response.paginationData, true);
 			});
 	}
 
-	_fetchSearch(searchInput) {
-		this.setLoadingState();
-		api.searchGiphy(searchInput)
+	_fetchSearch(searchValue) {
+		api.searchGiphy(searchValue, this.state.searchPagination)
 			.then((response)=> {
-				this.setGiphyList(response.gifListData, response.paginationData);
+				this.setGiphyList(response.gifListData, response.paginationData, false);
 			});
 	}
 
-	_setGiphyList(list, pagination) {
+	_setGiphyList(list, pagination, isTrendingSearch) {
+		const key = isTrendingSearch ? 'trendingPagination' : 'searchPagination';
 		this.setState({
 			loading: false,
 			giphyList: this.state.giphyList.concat(list),
-			pagination: pagination
+			[key]: pagination
+		}, ()=> {
+			console.log('state', this.state);
 		});
 	}
 
@@ -55,7 +74,6 @@ class GiphyListContainer extends Component {
 	render() {
 		const {
 			loading,
-			fetchTrending,
 			giphyList
 		} = this.state;
 		const {selectGif} = this.props;
@@ -63,10 +81,9 @@ class GiphyListContainer extends Component {
 			<div>
 				<GiphyList
 					giphyList={giphyList}
-					selectGiphy={this.selectGif}
 					loading={loading}
 					selectGif={selectGif}
-					loadMore={fetchTrending ? this.fetchTrending : this.fetchSearch} />
+					loadMore={this.fetchGifs} />
 			</div>
 		)
 	}

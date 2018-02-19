@@ -6,7 +6,6 @@ const host = "http://api.giphy.com";
 
 const api = {
 	fetchTrending: (options)=> {
-		console.log('offset options', options);
 		const trendingAPI = "/v1/gifs/trending";
 		return axios.get(host + trendingAPI, {
 				params: {
@@ -29,7 +28,7 @@ const api = {
 				params: {
 					api_key: api_key,
 					q: builtSearchValue,
-					offset: option.offset || undefined
+					offset: options.offset || undefined
 				}
 			})
 			.then((response)=> {

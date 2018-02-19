@@ -12,6 +12,7 @@ class GiphyList extends Component {
 		const {giphyList, loadMore, loading, selectGif} = this.props;
 		let rows = [];
 		let tr = [];
+
 		giphyList.forEach((gif, idx)=> {
 			tr.push(
 				<GifMinCard
@@ -19,7 +20,7 @@ class GiphyList extends Component {
 					key={gif.id}
 					selectGiphy={()=> selectGif(gif)} />
 			);
-			if (idx % 3 === 0) {
+			if (idx !== 0 && idx % 4 === 0) {
 				rows.push(<div className="gif-list__row" key={idx}>{tr}</div>);
 				tr = [];
 			}
