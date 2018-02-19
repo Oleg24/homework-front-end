@@ -20,12 +20,23 @@
 }
 
 .giphy-list {
+	/*display: flex;*/
+	/*flex-direction: row;*/
+	/*flex-wrap: wrap;*/
+	/*align-items: center;*/
+	/*justify-content: center;*/
+	background-color: #131313;
+	/*height: 100%;*/
+	/*padding: 5px;*/
+	border: 2px solid red;
+}
+
+.gif-list__row {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
-	background-color: #131313;
 	padding: 5px;
 }
 
@@ -134,6 +145,11 @@
 	overflow-x: scroll;
 	height: 35px;
 	flex: 1;
+}
+
+.gif-infinite-scroll {
+	height: 100%;
+	border: 2px solid red;
 }
 
 .ReactModal__Body--open {

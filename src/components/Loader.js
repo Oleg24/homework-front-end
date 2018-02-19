@@ -8,11 +8,11 @@ const styles = {
 	justifyContent: 'center'
 };
 
-const Loader = ({loading}) => (
-	loading ?
-		<div style={styles}>
-			<img src={loader} alt="" />
-		</div> : null
+const Loader = () => (
+	<div style={styles}>
+		<img src={loader} alt="" />
+	</div>
 );
 
 export default Loader;
+

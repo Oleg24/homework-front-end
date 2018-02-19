@@ -5,15 +5,16 @@ const api_key = "3o8JIonp13D6yH3cKYTSAn8EDpE2aine";
 const host = "http://api.giphy.com";
 
 const api = {
-	fetchTrending: ()=> {
+	fetchTrending: (options)=> {
+		console.log('offset options', options);
 		const trendingAPI = "/v1/gifs/trending";
 		return axios.get(host + trendingAPI, {
 				params: {
-					api_key: api_key
+					api_key: api_key,
+					offset: options.offset || undefined
 				}
 			})
 			.then((response)=> {
-				console.log(response);
 				return apiVO.mapGiphyResponse(response.data);
 			})
 			.catch((error)=> {
@@ -21,13 +22,14 @@ const api = {
 				throw error;
 			});
 	},
-	searchGiphy: (searchValue)=> {
+	searchGiphy: (searchValue, options)=> {
 		const builtSearchValue = apiVO.buildSearchValue(searchValue);
 		const searchAPI = "/v1/gifs/search";
 		return axios.get(host + searchAPI, {
 				params: {
 					api_key: api_key,
-					q: builtSearchValue
+					q: builtSearchValue,
+					offset: option.offset || undefined
 				}
 			})
 			.then((response)=> {
