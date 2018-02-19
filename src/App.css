@@ -117,9 +117,15 @@
 	width: 100%;
 }
 
-.embed-container {
+.embed {
 	display: flex;
 	flex-direction: column;
+}
+
+.embed-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 .embed-code {
@@ -127,6 +133,7 @@
 	color: black;
 	overflow-x: scroll;
 	height: 35px;
+	flex: 1;
 }
 
 .ReactModal__Body--open {

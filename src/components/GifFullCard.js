@@ -42,8 +42,8 @@ class GifFullCard extends Component {
 					<div>
 						<div className="gif-card__user">
 							<div className="gif-card__user-name">{gif.userName}</div>
-							{gif.twitter ?
-								<a className="gif-card__user-twitter" href={TWITTER_URL + gif.twitter} target="_black">
+							{gif.twitterHandle ?
+								<a className="gif-card__user-twitter" href={TWITTER_URL + gif.twitterHandle} target="_black">
 									{gif.twitter}
 								</a> : ""
 							}
@@ -68,6 +68,5 @@ class GifFullCard extends Component {
 		)
 	};
 }
-
 
 export default GifFullCard;

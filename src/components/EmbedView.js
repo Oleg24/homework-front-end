@@ -1,8 +1,14 @@
 import React from 'react';
+import {Icon} from 'semantic-ui-react';
 
 const createMarkup = (embedUrl, height, width, url)=> {
 	return "<iframe src='" + embedUrl + "' width='" + width + "' height='" + height + "' frameBorder=\"0\" " +
 		"class=\"giphy-embed\" allowFullScreen></iframe><p><a href='" + url + "'>via GIPHY</a></p>";
+};
+
+const copyMarkup = () => {
+	document.getElementById('embed-markup').select();
+	document.execCommand('copy');
 };
 
 const EmbedView = ({
@@ -10,11 +16,16 @@ const EmbedView = ({
 	height,
 	width,
 	url
-}) => (
-	<div className="embed-container">
-		GIF Embed Code
-		<input className="embed-code" value={createMarkup(embedUrl, height, width, url)} />
-	</div>
-);
+}) => {
+	const embedMarkup = createMarkup(embedUrl, height, width, url);
+	return (
+		<div className="embed">
+			GIF Embed Code
+			<div className="embed-container">
+				<input id="embed-markup" className="embed-code" value={embedMarkup} />
+				<Icon name="copy" size="large" onClick={copyMarkup} />
+			</div>
+		</div>)
+};
 
 export default EmbedView;
