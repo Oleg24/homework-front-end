@@ -43,8 +43,3 @@ class GiphyList extends Component {
 }
 
 export default GiphyList;
-
-// containerHeight={window.innerHeight}
-
-// <div id="gif-list-container" className="giphy-list">
-// </div>

@@ -12,6 +12,7 @@
     "react-infinite": "^0.12.1",
     "react-infinite-scroller": "^1.1.3",
     "react-modal": "^3.2.1",
+    "react-visibility-sensor": "^3.11.0",
     "semantic-ui-css": "^2.2.14",
     "semantic-ui-react": "^0.78.2"
   },
