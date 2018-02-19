@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import api from '../common/api-service';
 import GiphyList from './GiphyList';
-import Loader from './Loader';
 
 class GiphyListContainer extends Component {
 	constructor(props) {

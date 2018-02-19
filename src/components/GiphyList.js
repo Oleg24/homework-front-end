@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import GifMinCard from './GifMinCard';
 import InfiniteScroll from 'react-infinite';
 import Loader from './Loader';
+import {isMobile} from 'react-device-detect'
+
 
 class GiphyList extends Component {
 	constructor(props) {
@@ -29,7 +31,7 @@ class GiphyList extends Component {
 		});
 
 		return (
-			<InfiniteScroll elementHeight={200}
+			<InfiniteScroll elementHeight={isMobile ? 120 : 200}
 							useWindowAsScrollContainer
 							onInfiniteLoad={loadMore}
 							preloadBatchSize={InfiniteScroll.containerHeightScaleFactor(2)}

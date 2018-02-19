@@ -4,6 +4,7 @@ import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import GifModal from './components/GifModal';
 import GiphyListContainer from './components/GiphyListContainer';
+import {isMobile} from 'react-device-detect';
 
 class App extends Component {
 	constructor(props) {
@@ -11,7 +12,7 @@ class App extends Component {
 		this.state = {
 			openGifModal: false,
 			gifInFocus: {},
-			isAutoPlayActive: true,
+			isAutoPlayActive: isMobile ? false : true,
 			searchValue: ""
 		};
 		this.handleUserSearch = this._handleUserSearch.bind(this);
