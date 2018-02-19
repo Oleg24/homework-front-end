@@ -28,10 +28,8 @@
 }
 
 .toggle-auto-play__container {
-	align-self: flex-end;
 	flex: 1;
 	display: flex;
-	align-items: center;
 	justify-content: flex-end;
 }
 
@@ -46,7 +44,7 @@
 .gif-list__row {
 	display: flex;
 	flex-direction: row;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
 	align-items: center;
 	justify-content: space-between;
 	padding: 5px;

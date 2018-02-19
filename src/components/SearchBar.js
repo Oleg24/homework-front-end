@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {Input} from 'semantic-ui-react';
 import AutoPlay from './AutoPlay';
+import PropTypes from 'prop-types';
 
 const WAIT_INTERVAL = 800;
 
@@ -30,7 +31,7 @@ class SearchBar extends Component {
 
 	render() {
 		const {searchValue} = this.state;
-		const {toggleAutoPlay, isAutoPlayActive } = this.props;
+		const {toggleAutoPlay, isAutoPlayActive} = this.props;
 		return (
 			<div className="search-bar">
 				<Input
@@ -43,12 +44,17 @@ class SearchBar extends Component {
 				/>
 				<AutoPlay
 					isAutoPlayActive={isAutoPlayActive}
-					toggleAutoPlay={toggleAutoPlay} 
+					toggleAutoPlay={toggleAutoPlay}
 				/>
 			</div>
 		)
 	}
-
 }
+
+SearchBar.propTypes = {
+	toggleAutoPlay: PropTypes.func.isRequired,
+	isAutoPlayActive: PropTypes.bool.isRequired,
+	handleSearch: PropTypes.func.isRequired
+};
 
 export default SearchBar;

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import api from '../common/api-service';
 import GiphyList from './GiphyList';
+import PropTypes from 'prop-types';
 
 class GiphyListContainer extends Component {
 	constructor(props) {
@@ -86,5 +87,11 @@ class GiphyListContainer extends Component {
 		)
 	}
 }
+
+GiphyListContainer.propTypes = {
+	selectGif: PropTypes.func.isRequired,
+	isAutoPlayActive: PropTypes.bool.isRequired,
+	searchValue: PropTypes.string.isRequired
+};
 
 export default GiphyListContainer;

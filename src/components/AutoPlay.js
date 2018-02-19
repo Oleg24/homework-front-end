@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import {Icon} from 'semantic-ui-react';
+import PropTypes from 'prop-types';
 
 const ACTIVE = 'teal';
 const INACTIVE = 'grey';
@@ -26,5 +27,10 @@ const AutoPlay = ({
 		/>
 	</div>
 );
+
+AutoPlay.propTypes = {
+	isAutoPlayActive: PropTypes.bool.isRequired,
+	toggleAutoPlay: PropTypes.func.isRequired
+};
 
 export default AutoPlay;

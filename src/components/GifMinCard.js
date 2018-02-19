@@ -3,7 +3,7 @@ import GifVideo from './GifVideo';
 import VisibilitySensor from 'react-visibility-sensor';
 import Loader from './Loader';
 import {isMobile} from 'react-device-detect';
-
+import PropTypes from 'prop-types';
 
 const GifMinCard = ({
 	previewUrl,
@@ -11,7 +11,6 @@ const GifMinCard = ({
 	isAutoPlayActive,
 	selectGiphy
 }) => {
-	console.log(isMobile)
 	return (
 		<div className={isMobile? "gif-card-mini__mobile":"gif-card-mini"}
 			 onClick={selectGiphy}>
@@ -28,6 +27,13 @@ const GifMinCard = ({
 			</VisibilitySensor>
 		</div>
 	)
+};
+
+GifMinCard.propTypes = {
+	previewUrl: PropTypes.string.isRequired,
+	previewImage: PropTypes.string.isRequired,
+	isAutoPlayActive: PropTypes.bool.isRequired,
+	selectGiphy: PropTypes.func.isRequired
 };
 
 export default GifMinCard;

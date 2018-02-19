@@ -32,7 +32,6 @@ const api = {
 				}
 			})
 			.then((response)=> {
-				console.log(response);
 				return apiVO.mapGiphyResponse(response.data);
 			})
 			.catch((error)=> {
