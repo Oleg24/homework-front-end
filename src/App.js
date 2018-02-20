@@ -55,7 +55,7 @@ class App extends Component {
 		} = this.state;
 		return (
 			<div className="App">
-				<Header title="Eaze" />
+				<Header title="Eaze Gif Front End" />
 				<SearchBar
 					handleSearch={this.handleUserSearch}
 					isAutoPlayActive={isAutoPlayActive}

@@ -2,7 +2,7 @@ import React from 'react';
 import GifMinCard from './GifMinCard';
 import InfiniteScroll from 'react-infinite';
 import Loader from './Loader';
-import {isMobile} from 'react-device-detect'
+import {isMobileOnly, isTablet} from 'react-device-detect'
 import PropTypes from 'prop-types';
 
 const GifList = ({
@@ -14,6 +14,8 @@ const GifList = ({
 }) => {
 	let grid = [];
 	let row = [];
+	const itemsPerRow = isMobileOnly ? 3 : isTablet ? 4 : 5;
+	let count = 0;
 
 	gifList.forEach((gif, idx)=> {
 		row.push(
@@ -24,13 +26,15 @@ const GifList = ({
 				selectGif={()=> selectGif(gif)}
 			/>
 		);
-		if (idx !== 0 && idx % 4 === 0) {
+		count++;
+		if (itemsPerRow === count) {
 			grid.push(<div className="gif-list__row" key={idx}>{row}</div>);
 			row = [];
+			count = 0;
 		}
 	});
 	return (
-		<InfiniteScroll elementHeight={isMobile ? 120 : 200}
+		<InfiniteScroll elementHeight={isMobileOnly ? 120 : 200}
 						useWindowAsScrollContainer
 						onInfiniteLoad={loadMore}
 						preloadBatchSize={InfiniteScroll.containerHeightScaleFactor(2)}

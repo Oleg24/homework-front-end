@@ -12,7 +12,7 @@ const GifMinCard = ({
 	selectGif
 }) => {
 	return (
-		<div className={isMobile? "gif-card-mini__mobile":"gif-card-mini"}
+		<div className={isMobile ? "gif-card-mini__mobile":"gif-card-mini"}
 			 onClick={selectGif}>
 			<VisibilitySensor partialVisibility>
 				{({isVisible}) =>
@@ -20,7 +20,7 @@ const GifMinCard = ({
 						isAutoPlayActive={isAutoPlayActive}
 						previewUrl={previewUrl}
 						previewImage={previewImage}
-						width={isMobile ? 100 : 200}
+						width={isMobile ? 120 : 200}
 						height={isMobile ? 120 : 120}
 					/> : <div className="gif-card-mini__loading"><Loader /></div>
 				}

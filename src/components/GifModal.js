@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactModal from 'react-modal';
 import GifFullCard from './GifFullCard';
 import PropTypes from 'prop-types';
