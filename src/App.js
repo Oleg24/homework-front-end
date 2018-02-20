@@ -3,7 +3,7 @@ import './App.css';
 import Header from './components/Header';
 import SearchBar from './components/SearchBar';
 import GifModal from './components/GifModal';
-import GiphyListContainer from './components/GiphyListContainer';
+import GifListContainer  from './components/GifListContainer';
 import {isMobile} from 'react-device-detect';
 
 class App extends Component {
@@ -62,7 +62,7 @@ class App extends Component {
 					toggleAutoPlay={this.toggleAutoPlay}
 				/>
 				<GifModal open={openGifModal} gif={gifInFocus} toggleModal={this.toggleModal} />
-				<GiphyListContainer
+				<GifListContainer
 					selectGif={this.selectGif}
 					searchValue={searchValue}
 					isAutoPlayActive={isAutoPlayActive}

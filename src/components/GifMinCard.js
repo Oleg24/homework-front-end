@@ -9,11 +9,11 @@ const GifMinCard = ({
 	previewUrl,
 	previewImage,
 	isAutoPlayActive,
-	selectGiphy
+	selectGif
 }) => {
 	return (
 		<div className={isMobile? "gif-card-mini__mobile":"gif-card-mini"}
-			 onClick={selectGiphy}>
+			 onClick={selectGif}>
 			<VisibilitySensor partialVisibility>
 				{({isVisible}) =>
 					isVisible ? <GifVideo
@@ -33,7 +33,7 @@ GifMinCard.propTypes = {
 	previewUrl: PropTypes.string.isRequired,
 	previewImage: PropTypes.string.isRequired,
 	isAutoPlayActive: PropTypes.bool.isRequired,
-	selectGiphy: PropTypes.func.isRequired
+	selectGif: PropTypes.func.isRequired
 };
 
 export default GifMinCard;

@@ -1,12 +1,12 @@
-import React, {Component} from 'react';
+import React from 'react';
 import GifMinCard from './GifMinCard';
 import InfiniteScroll from 'react-infinite';
 import Loader from './Loader';
 import {isMobile} from 'react-device-detect'
 import PropTypes from 'prop-types';
 
-const GiphyList = ({
-	giphyList,
+const GifList = ({
+	gifList,
 	loadMore,
 	loading,
 	isAutoPlayActive,
@@ -15,13 +15,13 @@ const GiphyList = ({
 	let grid = [];
 	let row = [];
 
-	giphyList.forEach((gif, idx)=> {
+	gifList.forEach((gif, idx)=> {
 		row.push(
 			<GifMinCard
 				{...gif}
 				key={gif.id}
 				isAutoPlayActive={isAutoPlayActive}
-				selectGiphy={()=> selectGif(gif)}
+				selectGif={()=> selectGif(gif)}
 			/>
 		);
 		if (idx !== 0 && idx % 4 === 0) {
@@ -45,7 +45,7 @@ const GiphyList = ({
 	)
 };
 
-GiphyList.propTypes = {
+GifList.propTypes = {
 	giphyList: PropTypes.arrayOf(PropTypes.shape({
 		previewUrl: PropTypes.string,
 		previewImage: PropTypes.string,
@@ -66,4 +66,4 @@ GiphyList.propTypes = {
 	selectGif: PropTypes.func.isRequired
 };
 
-export default GiphyList;
+export default GifList ;

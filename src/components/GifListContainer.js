@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import api from '../common/api-service';
-import GiphyList from './GiphyList';
+import GifList from './GifList';
 import PropTypes from 'prop-types';
 
-class GiphyListContainer extends Component {
+class GifListContainer extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -77,8 +77,8 @@ class GiphyListContainer extends Component {
 		const {selectGif, isAutoPlayActive} = this.props;
 		return (
 			<div>
-				<GiphyList
-					giphyList={giphyList}
+				<GifList
+					gifList={giphyList}
 					loading={loading}
 					selectGif={selectGif}
 					isAutoPlayActive={isAutoPlayActive}
@@ -88,10 +88,10 @@ class GiphyListContainer extends Component {
 	}
 }
 
-GiphyListContainer.propTypes = {
+GifListContainer.propTypes = {
 	selectGif: PropTypes.func.isRequired,
 	isAutoPlayActive: PropTypes.bool.isRequired,
 	searchValue: PropTypes.string.isRequired
 };
 
-export default GiphyListContainer;
+export default GifListContainer;
