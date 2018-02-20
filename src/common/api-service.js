@@ -17,7 +17,6 @@ const api = {
 				return apiVO.mapGiphyResponse(response.data);
 			})
 			.catch((error)=> {
-				console.log('error', error);
 				throw error;
 			});
 	},
@@ -35,7 +34,6 @@ const api = {
 				return apiVO.mapGiphyResponse(response.data);
 			})
 			.catch((error)=> {
-				console.log('search error', error);
 				throw error;
 			});
 	}
