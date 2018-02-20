@@ -16,6 +16,10 @@ class GifFullCard extends Component {
 		this.toggleEmbed = this._toggleEmbed.bind(this);
 	}
 
+	/**
+	 * @desc for show/hide of the embed code
+	 * @private
+	 */
 	_toggleEmbed() {
 		this.setState({
 			openEmbedLink: !this.state.openEmbedLink

@@ -15,6 +15,11 @@ class SearchBar extends Component {
 		this.handleChange = this._handleChange.bind(this);
 	}
 
+	/**
+	 * @desc handles the user search input
+	 * @param {Event} e
+	 * @private
+	 */
 	_handleChange(e) {
 		const searchText = e.target.value;
 		if (this.timeout) {

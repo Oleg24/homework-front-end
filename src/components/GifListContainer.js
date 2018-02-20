@@ -32,6 +32,10 @@ class GifListContainer extends Component {
 		}
 	}
 
+	/**
+	 * @desc Logic for weather to fetch data from trending or search api
+	 * @private
+	 */
 	_fetchGifs() {
 		let searchValue = this.state.searchValue;
 		this._setLoadingState();
@@ -54,6 +58,11 @@ class GifListContainer extends Component {
 			});
 	}
 
+	/**
+	 * 
+	 * @param {String} searchValue
+	 * @private
+	 */
 	_fetchSearch(searchValue) {
 		api.searchGiphy(searchValue, this.state.searchPagination)
 			.then((response)=> {
@@ -66,6 +75,13 @@ class GifListContainer extends Component {
 			});
 	}
 
+	/**
+	 * @desc sets the gif list data based on api response
+	 * @param {Array} list
+	 * @param {Object} pagination
+	 * @param {Boolean} isTrendingSearch
+	 * @private
+	 */
 	_setGiphyList(list, pagination, isTrendingSearch) {
 		const key = isTrendingSearch ? 'trendingPagination' : 'searchPagination';
 		this.setState({
@@ -75,6 +91,10 @@ class GifListContainer extends Component {
 		});
 	}
 
+	/**
+	 * @desc sets loading state prior to fetching 
+	 * @private
+	 */
 	_setLoadingState() {
 		this.setState({
 			loading: !this.state.loading,
