@@ -8,9 +8,9 @@
   "dependencies": {
     "axios": "^0.17.1",
     "prop-types": "^15.6.0",
-    "react": "^15.2.1",
+    "react": "^15.6.2",
     "react-device-detect": "^0.1.0",
-    "react-dom": "^15.2.1",
+    "react-dom": "^15.6.2",
     "react-infinite": "^0.12.1",
     "react-modal": "^3.2.1",
     "react-visibility-sensor": "^3.11.0",
