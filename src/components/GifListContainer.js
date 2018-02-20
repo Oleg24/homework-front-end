@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import api from '../common/api-service';
 import GifList from './GifList';
+import Error from './Error';
 import PropTypes from 'prop-types';
 
 class GifListContainer extends Component {
@@ -12,7 +13,8 @@ class GifListContainer extends Component {
 			searchValue: '',
 			fetchSearch: false,
 			trendingPagination: {},
-			searchPagination: {}
+			searchPagination: {},
+			isError: false
 		};
 		this.setGiphyList = this._setGiphyList.bind(this);
 		this.fetchGifs = this._fetchGifs.bind(this);
@@ -44,6 +46,11 @@ class GifListContainer extends Component {
 		api.fetchTrending(this.state.trendingPagination)
 			.then((response)=> {
 				this.setGiphyList(response.gifListData, response.paginationData, true);
+			})
+			.catch(()=>{
+				this.setState({
+					isError: true
+				});
 			});
 	}
 
@@ -51,6 +58,11 @@ class GifListContainer extends Component {
 		api.searchGiphy(searchValue, this.state.searchPagination)
 			.then((response)=> {
 				this.setGiphyList(response.gifListData, response.paginationData, false);
+			})
+			.catch(()=>{
+				this.setState({
+					isError: true
+				});
 			});
 	}
 
@@ -65,24 +77,28 @@ class GifListContainer extends Component {
 
 	_setLoadingState() {
 		this.setState({
-			loading: !this.state.loading
+			loading: !this.state.loading,
+			isError: false
 		});
 	}
 
 	render() {
 		const {
 			loading,
-			giphyList
+			giphyList,
+			isError
 		} = this.state;
 		const {selectGif, isAutoPlayActive} = this.props;
 		return (
 			<div>
-				<GifList
-					gifList={giphyList}
-					loading={loading}
-					selectGif={selectGif}
-					isAutoPlayActive={isAutoPlayActive}
-					loadMore={this.fetchGifs} />
+				{ isError ? <Error/> :
+					<GifList
+						gifList={giphyList}
+						loading={loading}
+						selectGif={selectGif}
+						isAutoPlayActive={isAutoPlayActive}
+						loadMore={this.fetchGifs} />
+				}
 			</div>
 		)
 	}
